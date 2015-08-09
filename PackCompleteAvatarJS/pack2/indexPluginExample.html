@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+    <link href="bootstrap.min.css" rel="stylesheet" />
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="Cubexy.js"></script>
+<body>
+   
+        
+<canvas width="300" height="300" id="canvas"></canvas>
+<a id="Descargar">Descargar</a>
+<a id="Preview">Preview</a>
+<input type="hidden" id="colores"  />
+    <div>
+        <div id="avatar">
+            <div id="Rostro" >
+                <img src="1_piel/1.png"/>
+              
+            </div>
+            <div id="Ojos">
+                <img src="2_Ojos/1.png"/>
+                <img src="2_Ojos/2.png"/>
+            </div>
+            <div id="Pelo">
+                <img src="4_Pelo/3.png"/>
+                <img src="4_Pelo/2.png"/>
+            </div>
+            <div id="Boca">
+                <img src="3_Boca/11.png"/>
+                <img src="3_Boca/12.png"/>
+            </div>
+        </div>
+        <div></div>
+    
+        <script>
+		$('#avatar').Cubexy();
+        </script>
+    </div>
+</body>
+</html>

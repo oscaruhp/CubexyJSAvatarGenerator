@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Cubexy Plugin</title>
+</head>
+    
+    <script src="jquery-2.1.4.min.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+     <link href="css/prism.css" rel="stylesheet" />
+    
+    <script src="css/bootstrap.min.js"></script>
+	  <script src="css/prism.js"></script>
+    
+    <script src="Cubexy.js"></script>
+    <style>
+    .btn-lg{box-shadow: 0px 4px rgba(0, 0, 0, 0.2);	}
+.btn3d, .btn3d:focus {
+    position:relative;
+    top: -6px;
+    border:0;
+    -moz-outline-style:none;
+         outline:medium none;
+     transition: all 0.04s linear;
+     margin-top:10px;
+     margin-bottom:10px;
+     margin-left:2px;
+     margin-right:2px;
+}
+.btn3d:active, .btn3d.active {
+    top:2px;
+}
+.btn3d.btn-white {
+    color: #666666;
+    box-shadow:0 0 0 1px #ebebeb inset, 0 0 0 2px rgba(255,255,255,0.10) inset, 0 8px 0 0 #f5f5f5, 0 8px 8px 1px rgba(0,0,0,.2);
+    background-color:#fff;
+}
+.btn3d.btn-white:active, .btn3d.btn-white.active {
+    color: #666666;
+    box-shadow:0 0 0 1px #ebebeb inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,.1);
+    background-color:#fff;
+}
+.btn3d.btn-default {
+    color: #666666;
+    box-shadow:0 0 0 1px #ebebeb inset, 0 0 0 2px rgba(255,255,255,0.10) inset, 0 8px 0 0 #BEBEBE, 0 8px 8px 1px rgba(0,0,0,.2);
+    background-color:#f9f9f9;
+}
+.btn3d.btn-default:active, .btn3d.btn-default.active {
+    color: #666666;
+    box-shadow:0 0 0 1px #ebebeb inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,.1);
+    background-color:#f9f9f9;
+}
+.btn3d.btn-primary {
+    box-shadow:0 0 0 1px #417fbd inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #4D5BBE, 0 8px 8px 1px rgba(0,0,0,0.5);
+    background-color:#4274D7;
+}
+.btn3d.btn-primary:active, .btn3d.btn-primary.active {
+    box-shadow:0 0 0 1px #417fbd inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3);
+    background-color:#4274D7;
+}
+.btn3d.btn-success {
+    box-shadow:0 0 0 1px #31c300 inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #5eb924, 0 8px 8px 1px rgba(0,0,0,0.5);
+    background-color:#78d739;
+}
+.btn3d.btn-success:active, .btn3d.btn-success.active {
+    box-shadow:0 0 0 1px #30cd00 inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3);
+    background-color: #78d739;
+}
+.btn3d.btn-info {
+    box-shadow:0 0 0 1px #00a5c3 inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #348FD2, 0 8px 8px 1px rgba(0,0,0,0.5);
+    background-color:#39B3D7;
+}
+.btn3d.btn-info:active, .btn3d.btn-info.active {
+    box-shadow:0 0 0 1px #00a5c3 inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3);
+    background-color: #39B3D7;
+}
+.btn3d.btn-warning {
+    box-shadow:0 0 0 1px #d79a47 inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #D79A34, 0 8px 8px 1px rgba(0,0,0,0.5);
+    background-color:#FEAF20;
+}
+.btn3d.btn-warning:active, .btn3d.btn-warning.active {
+    box-shadow:0 0 0 1px #d79a47 inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3);
+    background-color: #FEAF20;
+}
+.btn3d.btn-danger {
+    box-shadow:0 0 0 1px #b93802 inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #AA0000, 0 8px 8px 1px rgba(0,0,0,0.5);
+    background-color:#D73814;
+}
+.btn3d.btn-danger:active, .btn3d.btn-danger.active {
+    box-shadow:0 0 0 1px #b93802 inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3);
+    background-color: #D73814;
+}
+.btn3d.btn-magick {
+    color: #fff;
+    box-shadow:0 0 0 1px #9a00cd inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #9823d5, 0 8px 8px 1px rgba(0,0,0,0.5);
+    background-color:#bb39d7;
+}
+.btn3d.btn-magick:active, .btn3d.btn-magick.active {
+    box-shadow:0 0 0 1px #9a00cd inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3);
+    background-color: #bb39d7;
+}
+    </style>
+    
+    
+<body>
+   <style>
+    #avatar img{ width: 100px; margin:2px; }
+	#menu img{ width: 70px; margin:2px; cursor:pointer; }
+	#menu img:hover{  border: #e51c23 5px outset;}
+	#menu .tab-activo{    border: #e51c23 10px outset;}
+    </style>
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-md-3 text-center">
+               <br/>
+				<div class="well">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal_button_form">
+			<input type="hidden" name="cmd" value="_donations">
+			<input type="hidden" name="item_number" value="369">
+			<input type="hidden" name="business" value="uhperezoscar@gmail.com">
+			<input type="hidden" name="item_name" value="Servicio">
+			
+			<input type="hidden" name="currency_code" value="USD">
+			<input type="hidden" name="lc" value="ES">
+			<input type="hidden" name="no_note" value="1">
+			<input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest">
+			$ <input type="text" class="paypal_amount" name="amount" value="50"><br/><br/>
+			<input type="hidden" class="temp_amount" name="temp_amount" value="500">
+			<input type="hidden" name="cpp_header_image" value="http://develoteca.com/wp-content/themes/site/img/develoteca.png">
+			<input type="hidden" name="return" value="http://develoteca.com/gracias-por-su-pago/">
+			<input type="hidden" name="quantity" value="1">
+<input type="image" class="paypal_button_form_submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" onclick="return adjustPayPalQuantity145(this);">
+<img alt="" style="border:0;display:none" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+               </div> 
+                 <div  class="well text-center" >
+                <a href="http://develoteca.com">
+                    <img     width=194 src="http://develoteca.com/wp-content/themes/site/img/develoteca.png"/>
+               <br/>by develoteca.com
+                </a><br/>
+                <a href="https://github.com/oscaruhp/3DCoverjQuery/zipball/master" class="btn3d btn btn-success btn-lg">Download v1.0</a>
+            </div>
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- anuncio160_600 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:160px;height:600px"
+     data-ad-client="ca-pub-4331617637495482"
+     data-ad-slot="3603100456"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </div>
+            <div class="col-md-9 text-center">
+                <div class="col-md-12">
+                    <h2>Cubexy.js</h2><h4>(Avatar Generator)</h4>
+             
+             <hr/>
+            </div>
+                <div class="col-md-4 text-center">
+                    
+                <canvas width="193" height="133" id="canvas">No Canvas support</canvas>
+                <div>
+                <a id="Descargar" class="btn btn-success"><span class="glyphicon glyphicon-cloud-download"></span> PNG</a>&nbsp;
+                <a id="Preview" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span> PNG</a>
+                </div>
+               
+                <br/>
+                <input type="hidden" id="colores"  />   
+					<br/>
+                </div>
+                <div class="col-md-8">
+                    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title"> 
+		<div id="menu" class="">
+            <img class="img-thumbnail" src="1_piel/1.png" data-tab='piel'/>
+			<img class="img-thumbnail tab-activo" src="2_ojos/1.png" data-tab='ojos'/>
+			 <img class="img-thumbnail " src="3_boca/1.png" data-tab='boca'/>
+			<img class="img-thumbnail" src="4_pelo/4.png" data-tab='pelo'/>
+			<img class="img-thumbnail" src="5_gafas/2.png" data-tab='gafas'/>
+			<img class="img-thumbnail" src="6_bigote/2.png" data-tab='bigote'/>
+			<img class="img-thumbnail" src="7_barba/4.png" data-tab='barba'/>
+			<img class="img-thumbnail" src="8_cejas/2.png" data-tab='cejas'/>
+			<img class="img-thumbnail" src="91_nariz/4.png" data-tab='nariz'/>
+			<img class="img-thumbnail" src="92_accesorios/3.png" data-tab='accesorios'/>
+		</div>
+		</h3>
+      </div>
+      <div class="panel-body">
+        <div id="avatar">
+                           
+                        <div id="piel" class="">
+                            <img class="img-thumbnail" src="1_piel/1.png"/>
+						</div>
+						
+                        <div id="ojos" >
+                            <img class="img-thumbnail" src="2_ojos/1.png"/>
+                            <img class="img-thumbnail" src="2_ojos/2.png"/>
+                            <img class="img-thumbnail" src="2_ojos/3.png"/>
+                            <img class="img-thumbnail" src="2_ojos/4.png"/>
+                           
+                        </div>
+                        <div id="boca" >
+                            <img class="img-thumbnail" src="3_boca/1.png"/>
+                            <img class="img-thumbnail" src="3_boca/2.png"/>
+                            <img class="img-thumbnail" src="3_boca/3.png"/>
+                            <img class="img-thumbnail" src="3_boca/4.png"/>
+                           
+                        </div>
+                       <div id="pelo" >
+                            <img class="img-thumbnail" src="4_pelo/1.png"/>
+                            <img class="img-thumbnail" src="4_pelo/2.png"/>
+                            <img class="img-thumbnail" src="4_pelo/3.png"/>
+                            <img class="img-thumbnail" src="4_pelo/4.png"/>
+                           
+                        </div>
+						 <div id="gafas" >
+                            <img class="img-thumbnail" src="5_gafas/1.png"/>
+                            <img class="img-thumbnail" src="5_gafas/2.png"/>
+                            <img class="img-thumbnail" src="5_gafas/3.png"/>
+                            <img class="img-thumbnail" src="5_gafas/4.png"/>
+                           
+                        </div>
+						 <div id="bigote" >
+                            <img class="img-thumbnail" src="6_bigote/1.png"/>
+                            <img class="img-thumbnail" src="6_bigote/2.png"/>
+                            <img class="img-thumbnail" src="6_bigote/3.png"/>
+                            <img class="img-thumbnail" src="6_bigote/4.png"/>
+                            
+                        </div>
+						 <div id="barba" class="">
+                            <img class="img-thumbnail" src="7_barba/1.png"/>
+                            <img class="img-thumbnail" src="7_barba/2.png"/>
+                            <img class="img-thumbnail" src="7_barba/3.png"/>
+                            <img class="img-thumbnail" src="7_barba/4.png"/>
+                           
+                        </div>
+						 <div id="cejas" >
+                            <img class="img-thumbnail" src="8_cejas/1.png"/>
+                            <img class="img-thumbnail" src="8_cejas/2.png"/>
+                            <img class="img-thumbnail" src="8_cejas/3.png"/>
+                            <img class="img-thumbnail" src="8_cejas/4.png"/>
+                           
+                        </div>
+						 <div id="nariz" >
+                            <img class="img-thumbnail" src="91_nariz/1.png"/>
+                            <img class="img-thumbnail" src="91_nariz/2.png"/>
+                            <img class="img-thumbnail" src="91_nariz/3.png"/>
+                            <img class="img-thumbnail" src="91_nariz/4.png"/>
+                            
+                        </div>
+						 <div id="accesorios" >
+                            <img class="img-thumbnail" src="92_accesorios/1.png"/>
+                            <img class="img-thumbnail" src="92_accesorios/2.png"/>
+                            <img class="img-thumbnail" src="92_accesorios/3.png"/>
+                            <img class="img-thumbnail" src="92_accesorios/4.png"/>
+                           
+                        </div>
+                    </div>
+               
+      </div>
+    </div>
+                </div>
+				
+					
+               <div class="col-md-12">
+                
+                 <h3>Quick start</h3>
+            1.- Include the files
+            <pre><code class="language-markup">
+&lt;!-- Bootstrap and JQuery -->
+&lt;script src="jquery-2.1.4.min.js"> &lt;/script>
+    
+&lt;!-- Plugin -->
+&lt;script src="Cubexy.js">&lt;/script></code></pre>
+              
+            2.- Create HTML Element (Ouput canvas)
+            <pre><code class="language-markup">
+            
+&lt;canvas width=&quot;300&quot; height=&quot;300&quot; id=&quot;canvas&quot;&gt;&lt;/canvas&gt;<br />
+&lt;a id=&quot;Descargar&quot;&gt;Descargar&lt;/a&gt;<br />
+&lt;a id=&quot;Preview&quot;&gt;Preview&lt;/a&gt;<br />
+&lt;input type=&quot;hidden&quot; id=&quot;colores&quot;  /&gt;
+
+</code></pre>
+                    3.- Create HTML Element (Parts - Images png)
+            <pre><code class="language-markup">
+&lt;div id=&quot;avatar&quot;&gt;<br /><br /><br />
+<br />
+&lt;div id=&quot;Rostro&quot; &gt;<br />
+&lt;img src=&quot;1_piel/1.png&quot;/&gt;<br />
+&lt;/div&gt;<br /><br />
+<br />
+&lt;div id=&quot;Ojos&quot;&gt;<br />
+&lt;img src=&quot;2_Ojos/1.png&quot;/&gt;<br />
+&lt;img src=&quot;2_Ojos/2.png&quot;/&gt;<br />
+&lt;/div&gt;<br /><br />
+<br />
+&lt;div id=&quot;Pelo&quot;&gt;<br />
+&lt;img src=&quot;4_Pelo/3.png&quot;/&gt;<br />
+&lt;img src=&quot;4_Pelo/2.png&quot;/&gt;<br />
+&lt;/div&gt;<br /><br />
+<br />
+&lt;div id=&quot;Boca&quot;&gt;<br />
+&lt;img src=&quot;3_Boca/11.png&quot;/&gt;<br />
+&lt;img src=&quot;3_Boca/12.png&quot;/&gt;<br />
+&lt;/div&gt;<br /><br />
+<br />
+&lt;/div&gt;
+
+
+</code></pre>
+                   
+                
+                 4.- Call the the plugin on a container as your wish
+            <pre><code class="language-javascript">
+    $('#avatar').Cubexy();
+               </code></pre>
+            
+            
+             4.- All done!
+            
+            <h2>Options</h2>
+            you can custom by passing options when call the plugin, all available options are listed below.
+call the the plugin on a container wish you wish
+            
+            
+             <pre><code class="language-javascript">
+       idInputColor:'colores',
+						 idDownload:'Descargar', /* Button Download image */
+						 idPreview:'Preview', /* Button Preview image */
+						 CanvasSalida:'canvas',  /* Canvas result */
+						 attImagenGrande:'src', /* Big Image merge */
+						 cssDefault:true, /* use css default ? */
+						 cssCambioColor:'actual', /* css Color Selector */
+						 cssParteActiva:'activo', /* css part Selector */
+						 cssParteUnica:'seleccionado', /* css image Selector */
+						 cssColorPicker:'colors' /* css Color Picker Selector */
+                 
+               </code></pre>
+            Demo (Options)
+           <pre><code class="language-javascript">
+        { idDownload:"Donwloadid" /* Button Download image */}
+           </code></pre>
+                   <hr/>
+                   <h1><a href="http://develoteca.com/buy-cubexypackimagecomplete/"> Buy Packs (More Images)</a></h1>
+                   <a href="http://develoteca.com/buy-cubexypackimagecomplete/">Buy</a>
+                   Pack 1:
+                    <a href="http://develoteca.com/buy-cubexypackimagecomplete/">
+                   <img width=800 class="image-responsive"  src="http://develoteca.com/wp-content/uploads/2015/08/Nueva-imagen.bmp" alt="Nueva imagen"  />
+                   </a>
+                    <a href="http://develoteca.com/buy-cubexypackimagecomplete/">
+                   Gift - Pack 2:
+                   <img width=800 class="image-responsive"  src="http://develoteca.com/wp-content/uploads/2015/08/Nueva-imagen-1.bmp" alt="Nueva imagen (1)" />
+                   </a>
+                </div>
+                
+                     
+            </div>
+        </div>
+    </div> 
+        <script>
+		$('#avatar').Cubexy();
+        </script>
+		<script>
+		$('#menu img').click(function(){
+		$('.tab-activo').removeClass('tab-activo');
+		$(this).addClass('tab-activo');
+		$('#avatar >div').hide();
+		$('#avatar >div#'+$(this).attr('data-tab')).show();
+		});
+		$('#avatar >div').hide();
+		$('#avatar >div#ojos').show();
+		</script>
+ 
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Cubexy Plugin</title>
+</head>
+    
+    <script src="jquery-2.1.4.min.js"></script>
+    <link href="bootstrap.min.css" rel="stylesheet" />
+    
+    <script src="bootstrap.min.js"></script>
+	
+    <script src="Cubexy.js"></script>
+    
+<body>
+   <style>
+    #avatar img{ width: 100px; margin:2px; }
+	#menu img{ width: 70px; margin:2px; cursor:pointer; }
+	#menu img:hover{  border: #e51c23 5px outset;}
+	#menu .tab-activo{    border: #e51c23 10px outset;}
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <br/>
+                   <canvas width="193" height="133" id="canvas">No Canvas support</canvas>
+                <div>
+                <a id="Descargar" class="btn btn-success">Download</a>&nbsp;
+                <a id="Preview" class="btn btn-primary">Preview</a>
+                </div>
+                <br/>
+                
+                <input type="hidden" id="colores"  />
+				<div class="well">
+            </div>
+            </div>
+            <div class="col-md-9">
+					   
+					<br/>
+					<div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title"> 
+		<div id="menu" class="">
+            <img class="img-thumbnail" src="1_piel/1.png" data-tab='piel'/>
+			<img class="img-thumbnail tab-activo" src="2_ojos/1.png" data-tab='ojos'/>
+			 <img class="img-thumbnail " src="3_boca/1.png" data-tab='boca'/>
+			<img class="img-thumbnail" src="4_pelo/11.png" data-tab='pelo'/>
+			<img class="img-thumbnail" src="5_gafas/2.png" data-tab='gafas'/>
+			<img class="img-thumbnail" src="6_bigote/2.png" data-tab='bigote'/>
+			<img class="img-thumbnail" src="7_barba/5.png" data-tab='barba'/>
+			<img class="img-thumbnail" src="8_cejas/2.png" data-tab='cejas'/>
+			<img class="img-thumbnail" src="91_nariz/11.png" data-tab='nariz'/>
+			<img class="img-thumbnail" src="92_accesorios/3.png" data-tab='accesorios'/>
+		</div>
+		</h3>
+      </div>
+      <div class="panel-body">
+        <div id="avatar">
+                           
+                        <div id="piel" class="">
+                            <img class="img-thumbnail" src="1_piel/1.png"/>
+						</div>
+						
+                        <div id="ojos" >
+                            <img class="img-thumbnail" src="2_ojos/1.png"/>
+                            <img class="img-thumbnail" src="2_ojos/2.png"/>
+                            <img class="img-thumbnail" src="2_ojos/3.png"/>
+                            <img class="img-thumbnail" src="2_ojos/4.png"/>
+                            <img class="img-thumbnail" src="2_ojos/5.png"/>
+                            <img class="img-thumbnail" src="2_ojos/6.png"/>
+                            <img class="img-thumbnail" src="2_ojos/7.png"/>
+                            <img class="img-thumbnail" src="2_ojos/8.png"/>
+                            <img class="img-thumbnail" src="2_ojos/9.png"/>
+                            <img class="img-thumbnail" src="2_ojos/10.png"/>
+                            <img class="img-thumbnail" src="2_ojos/11.png"/>
+							<img class="img-thumbnail" src="2_ojos/12.png"/>
+							<img class="img-thumbnail" src="2_ojos/13.png"/>
+							<img class="img-thumbnail" src="2_ojos/14.png"/>
+							
+                        </div>
+                        <div id="boca" >
+                            <img class="img-thumbnail" src="3_boca/1.png"/>
+                            <img class="img-thumbnail" src="3_boca/2.png"/>
+                            <img class="img-thumbnail" src="3_boca/3.png"/>
+                            <img class="img-thumbnail" src="3_boca/4.png"/>
+                            <img class="img-thumbnail" src="3_boca/5.png"/>
+                            <img class="img-thumbnail" src="3_boca/6.png"/>
+                            <img class="img-thumbnail" src="3_boca/7.png"/>
+                            <img class="img-thumbnail" src="3_boca/8.png"/>
+                            <img class="img-thumbnail" src="3_boca/9.png"/>
+                            <img class="img-thumbnail" src="3_boca/10.png"/>
+                            <img class="img-thumbnail" src="3_boca/11.png"/>
+							 <img class="img-thumbnail" src="3_boca/12.png"/>
+							  <img class="img-thumbnail" src="3_boca/13.png"/>
+							   <img class="img-thumbnail" src="3_boca/14.png"/>
+							    <img class="img-thumbnail" src="3_boca/15.png"/>
+								<img class="img-thumbnail" src="3_boca/16.png"/>
+								<img class="img-thumbnail" src="3_boca/17.png"/>
+								<img class="img-thumbnail" src="3_boca/18.png"/>
+								<img class="img-thumbnail" src="3_boca/19.png"/>
+                        </div>
+                       <div id="pelo" >
+                            <img class="img-thumbnail" src="4_pelo/1.png"/>
+                            <img class="img-thumbnail" src="4_pelo/2.png"/>
+                            <img class="img-thumbnail" src="4_pelo/3.png"/>
+                            <img class="img-thumbnail" src="4_pelo/4.png"/>
+                            <img class="img-thumbnail" src="4_pelo/5.png"/>
+                            <img class="img-thumbnail" src="4_pelo/6.png"/>
+                            <img class="img-thumbnail" src="4_pelo/7.png"/>
+                            <img class="img-thumbnail" src="4_pelo/8.png"/>
+                            <img class="img-thumbnail" src="4_pelo/9.png"/>
+                            <img class="img-thumbnail" src="4_pelo/10.png"/>
+                            <img class="img-thumbnail" src="4_pelo/11.png"/>
+							<img class="img-thumbnail" src="4_pelo/12.png"/>
+							<img class="img-thumbnail" src="4_pelo/13.png"/>
+							<img class="img-thumbnail" src="4_pelo/14.png"/>
+							<img class="img-thumbnail" src="4_pelo/15.png"/>
+							<img class="img-thumbnail" src="4_pelo/16.png"/>
+							<img class="img-thumbnail" src="4_pelo/17.png"/>
+							<img class="img-thumbnail" src="4_pelo/18.png"/>
+							<img class="img-thumbnail" src="4_pelo/19.png"/>
+							
+                        </div>
+						 <div id="gafas" >
+                            <img class="img-thumbnail" src="5_gafas/1.png"/>
+                            <img class="img-thumbnail" src="5_gafas/2.png"/>
+                            <img class="img-thumbnail" src="5_gafas/3.png"/>
+                            <img class="img-thumbnail" src="5_gafas/4.png"/>
+                            <img class="img-thumbnail" src="5_gafas/5.png"/>
+                            <img class="img-thumbnail" src="5_gafas/6.png"/>
+                            <img class="img-thumbnail" src="5_gafas/7.png"/>
+                            <img class="img-thumbnail" src="5_gafas/8.png"/>
+                            <img class="img-thumbnail" src="5_gafas/9.png"/>
+                            <img class="img-thumbnail" src="5_gafas/10.png"/>
+                            <img class="img-thumbnail" src="5_gafas/11.png"/>
+							 <img class="img-thumbnail" src="5_gafas/12.png"/>
+                        </div>
+						 <div id="bigote" >
+                            <img class="img-thumbnail" src="6_bigote/1.png"/>
+                            <img class="img-thumbnail" src="6_bigote/2.png"/>
+                            <img class="img-thumbnail" src="6_bigote/3.png"/>
+                            <img class="img-thumbnail" src="6_bigote/4.png"/>
+                            <img class="img-thumbnail" src="6_bigote/5.png"/>
+                            <img class="img-thumbnail" src="6_bigote/6.png"/>
+                            <img class="img-thumbnail" src="6_bigote/7.png"/>
+                            <img class="img-thumbnail" src="6_bigote/8.png"/>
+                            <img class="img-thumbnail" src="6_bigote/9.png"/>
+                            <img class="img-thumbnail" src="6_bigote/10.png"/>
+                        </div>
+						 <div id="barba" class="">
+                            <img class="img-thumbnail" src="7_barba/1.png"/>
+                            <img class="img-thumbnail" src="7_barba/2.png"/>
+                            <img class="img-thumbnail" src="7_barba/3.png"/>
+                            <img class="img-thumbnail" src="7_barba/4.png"/>
+                            <img class="img-thumbnail" src="7_barba/5.png"/>
+                            <img class="img-thumbnail" src="7_barba/6.png"/>
+                            <img class="img-thumbnail" src="7_barba/7.png"/>
+                            <img class="img-thumbnail" src="7_barba/8.png"/>
+                            <img class="img-thumbnail" src="7_barba/9.png"/>
+                            <img class="img-thumbnail" src="7_barba/10.png"/>
+                        </div>
+						 <div id="cejas" >
+                            <img class="img-thumbnail" src="8_cejas/1.png"/>
+                            <img class="img-thumbnail" src="8_cejas/2.png"/>
+                            <img class="img-thumbnail" src="8_cejas/3.png"/>
+                            <img class="img-thumbnail" src="8_cejas/4.png"/>
+                            <img class="img-thumbnail" src="8_cejas/5.png"/>
+                            <img class="img-thumbnail" src="8_cejas/6.png"/>
+                            <img class="img-thumbnail" src="8_cejas/7.png"/>
+                            <img class="img-thumbnail" src="8_cejas/8.png"/>
+                            <img class="img-thumbnail" src="8_cejas/9.png"/>
+                            <img class="img-thumbnail" src="8_cejas/10.png"/>
+                            <img class="img-thumbnail" src="8_cejas/11.png"/>
+							  <img class="img-thumbnail" src="8_cejas/12.png"/>
+							    <img class="img-thumbnail" src="8_cejas/13.png"/>
+								  <img class="img-thumbnail" src="8_cejas/14.png"/>
+								  <img class="img-thumbnail" src="8_cejas/15.png"/>
+								  <img class="img-thumbnail" src="8_cejas/16.png"/>
+								  <img class="img-thumbnail" src="8_cejas/17.png"/>
+                        </div>
+						 <div id="nariz" >
+                            <img class="img-thumbnail" src="91_nariz/1.png"/>
+                            <img class="img-thumbnail" src="91_nariz/2.png"/>
+                            <img class="img-thumbnail" src="91_nariz/3.png"/>
+                            <img class="img-thumbnail" src="91_nariz/4.png"/>
+                            <img class="img-thumbnail" src="91_nariz/5.png"/>
+                            <img class="img-thumbnail" src="91_nariz/6.png"/>
+                            <img class="img-thumbnail" src="91_nariz/7.png"/>
+                            <img class="img-thumbnail" src="91_nariz/8.png"/>
+                            <img class="img-thumbnail" src="91_nariz/9.png"/>
+                            <img class="img-thumbnail" src="91_nariz/10.png"/>
+                            <img class="img-thumbnail" src="91_nariz/11.png"/>
+							<img class="img-thumbnail" src="91_nariz/12.png"/>
+                        </div>
+						 <div id="accesorios" >
+                            <img class="img-thumbnail" src="92_accesorios/1.png"/>
+                            <img class="img-thumbnail" src="92_accesorios/2.png"/>
+                            <img class="img-thumbnail" src="92_accesorios/3.png"/>
+                            <img class="img-thumbnail" src="92_accesorios/4.png"/>
+                            <img class="img-thumbnail" src="92_accesorios/5.png"/>
+                            <img class="img-thumbnail" src="92_accesorios/6.png"/>
+                            <img class="img-thumbnail" src="92_accesorios/7.png"/>
+                            <img class="img-thumbnail" src="92_accesorios/8.png"/>
+                            <img class="img-thumbnail" src="92_accesorios/9.png"/>
+                        </div>
+                    </div>
+               
+      </div>
+    </div>
+                     
+            </div>
+        </div>
+    </div> 
+        <script>
+		$('#avatar').Cubexy();
+        </script>
+		<script>
+		$('#menu img').click(function(){
+		$('.tab-activo').removeClass('tab-activo');
+		$(this).addClass('tab-activo');
+		$('#avatar >div').hide();
+		$('#avatar >div#'+$(this).attr('data-tab')).show();
+		});
+		$('#avatar >div').hide();
+		$('#avatar >div#ojos').show();
+		</script>
+ 
+</body>
+</html>
